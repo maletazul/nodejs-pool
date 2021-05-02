@@ -22,12 +22,9 @@ cd /usr/local/src
 sudo git clone https://github.com/LetheanMovement/lethean.git
 cd lethean
 
-
 sudo cp ~/nodejs-pool/deployment/lethean.service /lib/systemd/system/
 sudo useradd -m letheandaemon -d /home/letheandaemon
-sudo git checkout v0.17.2.0
-sudo git submodule update --init
-USE_SINGLE_BUILDDIR=1 sudo --preserve-env=USE_SINGLE_BUILDDIR make -j$(nproc) release || USE_SINGLE_BUILDDIR=1 sudo --preserve-env=USE_SINGLE_BUILDDIR make release || exit 0
+
 BLOCKCHAIN_DOWNLOAD_DIR=$(sudo -u letheandaemon mktemp -d)
 sudo -u letheandaemon wget --limit-rate=50m -O $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.001 https://github.com/LetheanMovement/lethean/releases/download/v1.45-snap/blockchain.zip.001
 sudo -u letheandaemon wget --limit-rate=50m -O $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.002 https://github.com/LetheanMovement/lethean/releases/download/v1.45-snap/blockchain.zip.002
