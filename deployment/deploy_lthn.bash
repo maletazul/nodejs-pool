@@ -22,7 +22,7 @@ cd /usr/local/src
 sudo git clone https://github.com/LetheanMovement/lethean.git
 cd lethean
 sudo git checkout letheanize
-sudo make release -j$(nproc)
+#sudo make release -j$(nproc)
 sudo cp ~/nodejs-pool/deployment/lethean.service /lib/systemd/system/
 sudo useradd -m letheandaemon -d /home/letheandaemon
 sudo git checkout v0.17.2.0
